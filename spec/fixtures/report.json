@@ -2,7 +2,7 @@
   "metadata": {
     "rubocop_version": "0.75.1",
     "ruby_engine": "ruby",
-    "ruby_version": "2.6.4",
+    "ruby_version": "3.1.2",
     "ruby_patchlevel": "104",
     "ruby_platform": "x86_64-darwin18"
   },
