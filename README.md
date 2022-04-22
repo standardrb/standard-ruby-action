@@ -1,10 +1,10 @@
 <div align="center">
   <img width="640" height="320" alt="StandardRB Action" src="screenshots/standardrb-action.png" style="border-radius:0.5rem;">
 
-  ![StandardRB](https://github.com/andrewmcodes/standardrb-action/workflows/StandardRB/badge.svg)
-  ![Tests](https://github.com/andrewmcodes/standardrb-action/workflows/Test/badge.svg)
-  ![Build](https://github.com/andrewmcodes/standardrb-action/workflows/Build/badge.svg)
-  [![Changelog](https://github.com/andrewmcodes/standardrb-action/workflows/Changelog/badge.svg)](/CHANGELOG.md)
+  ![StandardRB](https://github.com/testdouble/standardrb-action/workflows/StandardRB/badge.svg)
+  ![Tests](https://github.com/testdouble/standardrb-action/workflows/Test/badge.svg)
+  ![Build](https://github.com/testdouble/standardrb-action/workflows/Build/badge.svg)
+  [![Changelog](https://github.com/testdouble/standardrb-action/workflows/Changelog/badge.svg)](/CHANGELOG.md)
   ![Version Number](https://img.shields.io/static/v1?label=Version&message=v0.0.2&color=blue)
   [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 </div>
@@ -22,7 +22,6 @@ A GitHub Action to run [StandardRB](https://github.com/testdouble/standard) agai
   - [:bookmark: Changelog](#bookmark-changelog)
   - [:sos: Contributing](#sos-contributing)
   - [:rotating_light: Code of Conduct](#rotatinglight-code-of-conduct)
-  - [:copyright: License](#copyright-license)
   - [:robot: Check Out My Other Ruby GitHub Actions](#robot-check-out-my-other-ruby-github-actions)
   - [✨ Contributors](#%e2%9c%a8-contributors)
 
@@ -38,7 +37,7 @@ Add the following to your GitHub action workflow to use StandardRB Linter Action
 
 ```yaml
 - name: StandardRB Linter
-  uses: andrewmcodes/standardrb-action@v0.0.2
+  uses: testdouble/standardrb-action@v0.0.2
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -58,7 +57,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: StandardRB Linter
-      uses: andrewmcodes/standardrb-action@v0.0.2
+      uses: testdouble/standardrb-action@v0.0.2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -82,17 +81,12 @@ Due to the GitHub Check Runs API, we can only return 50 annotations per run. See
 
 ## :rotating_light: Code of Conduct
 
-[Code of Conduct](/CODE_OF_CONDUCT.md)
-
-## :copyright: License
-
-[MIT](/LICENSE.md)
-
-## :robot: Check Out My Other Ruby GitHub Actions
-
-- [andrewmcodes/rubocop-linter-action](https://github.com/andrewmcodes/rubocop-linter-action).
-- [andrewmcodes/haml-lint-action](https://github.com/andrewmcodes/haml-lint-action).
-
+This project follows Test Double's [code of
+conduct](https://testdouble.com/code-of-conduct) for all community interactions,
+including (but not limited to) one-on-one communications, public posts/comments,
+code reviews, pull requests, and GitHub issues. If violations occur, Test Double
+will take any action they deem appropriate for the infraction, up to and
+including blocking a user from the organization's repositories.
 
 ## ✨ Contributors
 
