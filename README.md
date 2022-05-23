@@ -9,7 +9,7 @@
   [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 </div>
 
-# :white_check_mark: StandardRB Action
+# :white_check_mark: Standard Ruby Action
 
 A GitHub Action to run [StandardRB](https://github.com/testdouble/standard) against your code and create annotations in the GitHub UI.
 
