@@ -25,7 +25,7 @@ Add the following to your GitHub action workflow to use StandardRB Linter Action
 
 ```yaml
 - name: StandardRB Linter
-  uses: testdouble/standardrb-action@v0.0.4
+  uses: testdouble/standard-ruby-action@v0.0.4
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -45,7 +45,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: StandardRB Linter
-      uses: testdouble/standardrb-action@v0.0.4
+      uses: testdouble/standard-ruby-action@v0.0.4
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
