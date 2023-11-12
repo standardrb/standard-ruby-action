@@ -7,9 +7,3 @@ group :development do
   gem "standard"
 end
 
-group :test do
-  gem "json"
-  gem "pry"
-  gem "rspec"
-  gem "webmock"
-end
