@@ -1,17 +1,17 @@
 # :white_check_mark: Standard Ruby Action
 
-A GitHub Action to run [StandardRB](https://github.com/testdouble/standard) against your code and create annotations in the GitHub UI.
+A GitHub Action to run [StandardRB](https://github.com/standardrb/standard) against your code and create annotations in the GitHub UI.
 
-- [:white_check_mark: StandardRB Action](#whitecheckmark-standardrb-action)
-  - [:page_facing_up: Introduction](#pagefacingup-introduction)
+- [:white\_check\_mark: Standard Ruby Action](#white_check_mark-standard-ruby-action)
+  - [:page\_facing\_up: Introduction](#page_facing_up-introduction)
   - [:bulb: Usage](#bulb-usage)
     - [:package: Example Workflow](#package-example-workflow)
   - [:warning: Gotchas](#warning-gotchas)
-  - [:camera_flash: Screenshots](#cameraflash-screenshots)
+  - [:camera\_flash: Screenshots](#camera_flash-screenshots)
   - [:bookmark: Changelog](#bookmark-changelog)
   - [:sos: Contributing](#sos-contributing)
-  - [:rotating_light: Code of Conduct](#rotatinglight-code-of-conduct)
-  - [✨ Contributors](#%e2%9c%a8-contributors)
+  - [:rotating\_light: Code of Conduct](#rotating_light-code-of-conduct)
+  - [✨ Contributors](#-contributors)
 
 ## :page_facing_up: Introduction
 
@@ -25,9 +25,10 @@ Add the following to your GitHub action workflow to use StandardRB Linter Action
 
 ```yaml
 - name: StandardRB Linter
-  uses: testdouble/standard-ruby-action@v0.0.5
+  uses: standardrb/standard-ruby-action@v0.1.0
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    USE_BUNDLE_VERSION: true # anything else (or omitting) will run the current version instead of your projects version
 ```
 
 ### :package: Example Workflow
@@ -45,7 +46,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: StandardRB Linter
-      uses: testdouble/standard-ruby-action@v0.0.5
+      uses: standardrb/standard-ruby-action@v0.1.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
