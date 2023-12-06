@@ -1,4 +1,4 @@
-# :white_check_mark: Standard Ruby Action
+# ![image](https://github.com/standardrb/standard-ruby-action/assets/16904172/ed2d125f-26fd-45fb-a78f-c68c8bcbefed) Standard Ruby Action
 
 A GitHub Action to run [StandardRB](https://github.com/standardrb/standard) against your code and create annotations in the GitHub UI.
 
