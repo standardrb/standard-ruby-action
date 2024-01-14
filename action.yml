@@ -2,11 +2,28 @@
 name: 'StandardRB Action'
 description: 'A GitHub Action that lints your Ruby code with StandardRB!'
 author: 'Andrew Mason <andrewmcodes@protonmail.com>'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
 env:
   GITHUB_TOKEN: secrets.GITHUB_TOKEN
 branding:
   icon: 'code'
   color: 'gray-dark'
+inputs:
+  use-bundler:
+    description: 'Use bundled standard executable'
+    required: false
+    default: true
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Run standardrb'
+      shell: bash
+      run: |
+        CMD="standardrb --parallel -f github"
+        if [[ ${{ inputs.use-bundler }} = "true" ]]; then
+          echo "[info] using bundled version"
+          CMD="bundle exec $CMD"
+        else
+          echo "[info] using current version"
+        fi
+        eval "$CMD"
+
