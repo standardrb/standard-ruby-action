@@ -21,19 +21,7 @@ Since GitHub actions and the checks API are continually changing, it is possible
 
 ## :bulb: Usage
 
-Add the following to your GitHub action workflow to use StandardRB Linter Action:
-
-```yaml
-- name: StandardRB Linter
-  uses: standardrb/standard-ruby-action@v0.1.0
-  env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    USE_BUNDLE_VERSION: true # anything else (or omitting) will run the current version instead of your projects version
-```
-
-### :package: Example Workflow
-
-Here is an example workflow file incorporating StandardRB Linter Action:
+Here is an example Actions workflow which incorporates the StandardRB linter action:
 
 ```yaml
 name: StandardRB
@@ -44,9 +32,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: StandardRB Linter
-      uses: standardrb/standard-ruby-action@v0.1.0
+    - name: Checkout
+      uses: actions/checkout@v4
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - name: Lint with StandardRB
+      uses: standardrb/standard-ruby-action@v1
+      with:
+        use-bundler: true # default, not necessary to specify
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
