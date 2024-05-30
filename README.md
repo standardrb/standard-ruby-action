@@ -25,7 +25,7 @@ Add the following to your GitHub action workflow to use StandardRB Linter Action
 
 ```yaml
 - name: StandardRB Linter
-  uses: standardrb/standard-ruby-action@v0.1.0
+  uses: standardrb/standard-ruby-action@v0.0.5
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     USE_BUNDLE_VERSION: true # anything else (or omitting) will run the current version instead of your projects version
@@ -44,7 +44,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - name: StandardRB Linter
       uses: standardrb/standard-ruby-action@v0.0.5
       env:
