@@ -1,6 +1,11 @@
-# ![image](https://github.com/standardrb/standard-ruby-action/assets/16904172/ed2d125f-26fd-45fb-a78f-c68c8bcbefed) Standard Ruby Action
+# Standard Ruby GitHub Action
 
-A GitHub Action to run [StandardRB](https://github.com/standardrb/standard) against your code and create annotations in the GitHub UI.
+A GitHub Action to run [Standard Ruby](https://github.com/standardrb/standard)
+against your code. Here's what it does:
+
+1. Runs `bundle exec standardrb --fix` on the root directory of your repo
+2. If any errors were auto-fixable, it commits those changes back to the repo
+3. If any errors remain, it fails the build with annotations for each failure
 
 ## Usage
 
