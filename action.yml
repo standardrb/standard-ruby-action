@@ -3,7 +3,9 @@ description: 'A GitHub Action that lints and auto-fixes your Ruby code with Stan
 author: 'Justin Searls <searls@gmail.com>'
 runs:
   using: composite
-  shell: bash
+  defaults:
+    run:
+      shell: bash
 
   steps:
     - name: Checkout code
