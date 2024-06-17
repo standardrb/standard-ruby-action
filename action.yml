@@ -1,12 +1,40 @@
-
 name: 'Standard Ruby'
-description: 'A GitHub Action that lints your Ruby code with Standard Ruby'
+description: 'A GitHub Action that lints and auto-fixes your Ruby code with Standard Ruby'
 author: 'Justin Searls <searls@gmail.com>'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'composite'
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 'ruby'
+        bundler-cache: true
+
+    - name: Install dependencies
+      run: bundle install
+
+    - name: Run Standard Ruby with autofix
+      run: bundle exec standardrb --fix
+      id: standardrb
+
+    - name: Commit changes
+      run: |
+        git config --global user.name 'standard-ruby-action[bot]'
+        git config --global user.email 'standard-ruby-action[bot]@users.noreply.github.com'
+        # Add any files that were changed by Standard Ruby
+        git diff --name-only --diff-filter=M | xargs git add
+        git commit -m "Apply Standard Ruby autofixes" || echo "No changes to commit"
+        git push
+
+    - name: Fail if Standard Ruby failed
+      if: ${{ steps.standardrb.outcome == 'failure' }}
+      run: exit 1
+
 env:
-  GITHUB_TOKEN: secrets.GITHUB_TOKEN
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 branding:
   icon: 'code'
   color: 'gray-dark'
