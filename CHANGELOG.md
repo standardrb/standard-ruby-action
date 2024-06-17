@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.1
+
+* Add GitHub annotations formatting to output
+
 ## 1.0.0
 
 * Rewritten as a 'composite' workflow action
