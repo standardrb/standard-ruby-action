@@ -19,14 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       checks: write
-      contents: read
+      contents: write
     steps:
-    - uses: actions/checkout@v4
     - name: Standard Ruby
-      uses: standardrb/standard-ruby-action@v0.0.5
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        USE_BUNDLE_VERSION: true
+      uses: standardrb/standard-ruby-action@v1
 ```
 
 ### Adding to an existing workflow:
@@ -35,13 +31,11 @@ You can add the following to your existing GitHub Action workflow:
 
 ```yaml
 - name: Standard Ruby
-  uses: standardrb/standard-ruby-action@v0.0.5
-  env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    USE_BUNDLE_VERSION: true
+  uses: standardrb/standard-ruby-action@v1
 ```
 
-This will require you to add these permissions (after specifying the operating system via `runs_on`):
+This will require you to add these permissions at the top-level of your workflow
+(for example, after specifying the operating system via `runs_on`):
 
 ```yaml
 runs-on: ubuntu-latest
@@ -52,19 +46,13 @@ permissions:
 
 ## Options
 
-These can be set under `env:` in the Standard Ruby action step.
-
-If you've installed the `standard` gem to your project with Bundler, then you
-probably want to run the same version in this action. Under the action, set:
-
-```yaml
-USE_BUNDLE_VERSION: true
-```
-
-Omitting this value or setting it to anything else will instead execute
-`gem install standard` and run the latest version of Standard Ruby.
+There are no options.
 
 ## Screenshots
+
+**[Update 6/17/2024: the current v1 release doesn't produce annotations like
+this, unfortunately. See
+[#16](https://github.com/standardrb/standard-ruby-action/issues/16)]**
 
 ![StandardRB Action Checks Overview](screenshots/check-overview.png)
 ![StandardRB Action File Annotation](screenshots/file-annotation.png)
