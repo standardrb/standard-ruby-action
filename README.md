@@ -12,7 +12,6 @@ To separate Standard Ruby linting and formatting from your main test suite, you
 can add it in a standalone workflow:
 
 ```yaml
-```yaml
 name: Standard Ruby
 
 on: [push]
