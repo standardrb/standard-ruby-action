@@ -26,19 +26,19 @@ runs:
       run: bundle exec standardrb --fix
       continue-on-error: true
 
-    - name: Check for autofixed files
+    - name: Check for modified files
       id: check_changes
       shell: bash
       run: |
         if [ -n "$(git diff --name-only --diff-filter=M)" ]; then
-          echo "::set-output name=changes::true"
+          echo "standardrb_autofixes_found=true" >> $GITHUB_ENV
         else
-          echo "::set-output name=changes::false"
+          echo "standardrb_autofixes_found=false" >> $GITHUB_ENV
         fi
 
     - name: Commit autofixes
       shell: bash
-      if: steps.check_changes.outputs.changes == 'true'
+      if: env.standardrb_autofixes_found == 'true'
       run: |
         git config --global user.name 'standard-ruby-action[bot]'
         git config --global user.email 'standard-ruby-action[bot]@users.noreply.github.com'
