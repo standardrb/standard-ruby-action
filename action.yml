@@ -1,12 +1,57 @@
-
 name: 'Standard Ruby'
-description: 'A GitHub Action that lints your Ruby code with Standard Ruby'
+description: 'A GitHub Action that lints and auto-fixes your Ruby code with Standard Ruby'
 author: 'Justin Searls <searls@gmail.com>'
+
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-env:
-  GITHUB_TOKEN: secrets.GITHUB_TOKEN
+  using: composite
+
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        # Use the latest stable CRuby version
+        ruby-version: ruby
+        bundler-cache: true
+
+    - name: Install dependencies
+      shell: bash
+      run: bundle install
+
+    - name: Run Standard Ruby with autofix
+      id: standardrb
+      shell: bash
+      run: bundle exec standardrb --fix
+      continue-on-error: true
+
+    - name: Check for modified files
+      id: check_changes
+      shell: bash
+      run: |
+        if [ -n "$(git diff --name-only --diff-filter=M)" ]; then
+          echo "standardrb_autofixes_found=true" >> $GITHUB_ENV
+        else
+          echo "standardrb_autofixes_found=false" >> $GITHUB_ENV
+        fi
+
+    - name: Commit autofixes
+      shell: bash
+      if: env.standardrb_autofixes_found == 'true'
+      run: |
+        git config --global user.name 'standard-ruby-action[bot]'
+        git config --global user.email 'standard-ruby-action[bot]@users.noreply.github.com'
+        # Add any files that were changed by Standard Ruby
+        git diff --name-only --diff-filter=M | xargs git add
+        git commit -m "Apply Standard Ruby autofixes" || echo "No changes to commit"
+        git push
+
+    - name: Fail if Standard Ruby failed
+      shell: bash
+      if: ${{ steps.standardrb.outcome == 'failure' }}
+      run: exit 1
+
 branding:
   icon: 'code'
   color: 'gray-dark'
