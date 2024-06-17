@@ -16,10 +16,6 @@ runs:
         ruby-version: ruby
         bundler-cache: true
 
-    - name: Install dependencies
-      shell: bash
-      run: bundle install
-
     - name: Run Standard Ruby with autofix
       id: standardrb
       shell: bash
