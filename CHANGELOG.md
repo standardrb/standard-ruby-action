@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.0
+
+* Rewritten as a 'composite' workflow action
+
 ## 0.0.3 - 0.0.5
 
 * Changes lost to the sands of time, because this file wasn't kept up to date.
