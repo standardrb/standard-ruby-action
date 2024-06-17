@@ -21,9 +21,10 @@ runs:
       run: bundle install
 
     - name: Run Standard Ruby with autofix
+      id: standardrb
       shell: bash
       run: bundle exec standardrb --fix
-      id: standardrb
+      continue-on-error: true
 
     - name: Commit changes
       shell: bash
