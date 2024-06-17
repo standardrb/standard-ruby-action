@@ -2,7 +2,9 @@ name: 'Standard Ruby'
 description: 'A GitHub Action that lints and auto-fixes your Ruby code with Standard Ruby'
 author: 'Justin Searls <searls@gmail.com>'
 runs:
-  using: 'composite'
+  using: composite
+  shell: bash
+
   steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -10,7 +12,8 @@ runs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 'ruby'
+        # Use the latest stable CRuby version
+        ruby-version: ruby
         bundler-cache: true
 
     - name: Install dependencies
