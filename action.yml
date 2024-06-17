@@ -36,17 +36,21 @@ runs:
       shell: bash
       if: env.standardrb_autofixes_found == 'true'
       run: |
+        echo "::group::Committing Standard Fixes"
         git config --global user.name 'standard-ruby-action[bot]'
         git config --global user.email 'standard-ruby-action[bot]@users.noreply.github.com'
         # Add any files that were changed by Standard Ruby
         git diff --name-only --diff-filter=M | xargs git add
         git commit -m "Apply Standard Ruby autofixes" || echo "No changes to commit"
         git push
+        echo "::endgroup::"
 
-    - name: Fail if Standard Ruby failed
+    - name: Fail the build if Standard Ruby failed
       shell: bash
       if: ${{ steps.standardrb.outcome == 'failure' }}
-      run: exit 1
+      run: |
+        echo "::error::Standard Ruby found issues in your code."
+        exit 1
 
 branding:
   icon: 'code'
