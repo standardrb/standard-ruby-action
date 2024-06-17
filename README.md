@@ -2,8 +2,6 @@
 
 A GitHub Action to run [StandardRB](https://github.com/standardrb/standard) against your code and create annotations in the GitHub UI.
 
-**[Status as of 6/17/2024: it's possible that the workflow may not work for most (or all) users. We're investigating.]**
-
 ## Usage
 
 ### Creating a Standard Ruby workflow:
