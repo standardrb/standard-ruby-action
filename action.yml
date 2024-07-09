@@ -5,6 +5,12 @@ author: 'Justin Searls <searls@gmail.com>'
 runs:
   using: composite
 
+  inputs:
+    ruby-version:
+      description: 'The Ruby version specifier to pass to ruby/setup-ruby'
+      required: false
+      default: 'ruby' # Defaults to the latest stable CRuby version
+
   steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -12,8 +18,7 @@ runs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        # Use the latest stable CRuby version
-        ruby-version: ruby
+        ruby-version: "${{inputs.ruby-version}}"
         bundler-cache: true
 
     - name: Run Standard Ruby with autofix

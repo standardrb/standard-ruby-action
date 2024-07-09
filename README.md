@@ -51,7 +51,16 @@ permissions:
 
 ## Options
 
-There are no options.
+* `ruby-version` - This will be forwarded to the [ruby/setup-ruby](https://github.com/ruby/setup-ruby) action, so it takes the same values.
+
+Example with options set:
+
+```yaml
+- name: Standard Ruby
+  uses: standardrb/standard-ruby-action@v1
+  with:
+    ruby-version: '3.3'
+```
 
 ## Screenshots
 

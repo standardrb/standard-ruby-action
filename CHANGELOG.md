@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Unreleased
+
+* Set the ruby-version
+
 ## 1.0.1
 
 * Add GitHub annotations formatting to output
