@@ -2,14 +2,14 @@ name: 'Standard Ruby'
 description: 'A GitHub Action that lints and auto-fixes your Ruby code with Standard Ruby'
 author: 'Justin Searls <searls@gmail.com>'
 
+inputs:
+  ruby-version:
+    description: 'The Ruby version specifier to pass to ruby/setup-ruby'
+    required: false
+    default: 'ruby' # Defaults to the latest stable CRuby version
+
 runs:
   using: composite
-
-  inputs:
-    ruby-version:
-      description: 'The Ruby version specifier to pass to ruby/setup-ruby'
-      required: false
-      default: 'ruby' # Defaults to the latest stable CRuby version
 
   steps:
     - name: Checkout code
