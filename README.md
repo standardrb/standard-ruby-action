@@ -52,6 +52,7 @@ permissions:
 ## Options
 
 * `ruby-version` - This will be forwarded to the [ruby/setup-ruby](https://github.com/ruby/setup-ruby) action, so it takes the same values.
+* `autofix` - If set to `false`, the action will not attempt to auto-fix any errors. Defaults to `true`.
 
 Example with options set:
 
@@ -60,6 +61,7 @@ Example with options set:
   uses: standardrb/standard-ruby-action@v1
   with:
     ruby-version: '3.3'
+    autofix: false
 ```
 
 ## Screenshots
