@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.2.0
+
+* Make fix optional [#18](https://github.com/standardrb/standard-ruby-action/pull/18)
+
 ## 1.1.0
 
 * Set the ruby-version
