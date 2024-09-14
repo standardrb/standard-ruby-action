@@ -19,10 +19,22 @@ runs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Check for .ruby-version file
+      id: use_ruby_version_or_default
+      shell: bash
+      run: |
+        if [ -f .ruby-version ]; then
+          echo "Using Ruby version from .ruby-version file"
+          RUBY_VERSION=$(cat .ruby-version)
+          echo "ruby-version=$RUBY_VERSION" >> $GITHUB_ENV
+        else
+          echo "No .ruby-version file found, using default"
+        fi
+
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: ${{ inputs.ruby-version }}
+        ruby-version: ${{ env.ruby-version || inputs.ruby-version }}
         bundler-cache: true
 
     - name: Run Standard Ruby with autofix
