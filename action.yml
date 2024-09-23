@@ -11,6 +11,9 @@ inputs:
     description: 'Whether autofixes should be committed back to the branch'
     required: false
     default: 'true'
+  workdir:
+    description: "The working directory from which to run this action's commands. Default '.'"
+    default: '.'
 
 runs:
   using: composite
@@ -22,6 +25,7 @@ runs:
     - name: Check for .ruby-version file
       id: use_ruby_version_or_default
       shell: bash
+      working-directory: ${{ inputs.workdir }}
       run: |
         if [ -f .ruby-version ]; then
           echo "Using Ruby version from .ruby-version file"
@@ -36,16 +40,19 @@ runs:
       with:
         ruby-version: ${{ env.ruby-version || inputs.ruby-version }}
         bundler-cache: true
+        working-directory: ${{ inputs.workdir }}
 
     - name: Run Standard Ruby with autofix
       id: standardrb
       shell: bash
+      working-directory: ${{ inputs.workdir }}
       run: bundle exec standardrb ${{ inputs.autofix == 'true' && '--fix' || '' }} --format github --format "Standard::Formatter"
       continue-on-error: true
 
     - name: Check for modified files
       id: check_changes
       shell: bash
+      working-directory: ${{ inputs.workdir }}
       run: |
         if [ -n "$(git diff --name-only --diff-filter=M)" ]; then
           echo "standardrb_autofixes_found=true" >> $GITHUB_ENV
