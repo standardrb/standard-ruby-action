@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.3.0
+
+* Configurable working directory [#22](https://github.com/standardrb/standard-ruby-action/pull/22)
+
 ## 1.2.0
 
 * Make fix optional [#18](https://github.com/standardrb/standard-ruby-action/pull/18)
