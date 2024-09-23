@@ -53,7 +53,7 @@ permissions:
 
 - `ruby-version` - If your project has a `.ruby-version` file, this Action will use that version of Ruby. If not, this will be forwarded to the [ruby/setup-ruby](https://github.com/ruby/setup-ruby) action, so it takes the same values.
 - `autofix` - If set to `false`, the action will not attempt to auto-fix any errors. Defaults to `true`.
-- `workdir` - If set the action will descend to this directory before running `bundle exec standardrb …`. Defaults to `.`.
+- `workdir` - If set the action will descend to this directory before running `bundle exec standardrb …` and other relevant setup commands. Defaults to `.`.
 
 Example with options set:
 
