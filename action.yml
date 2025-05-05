@@ -22,7 +22,6 @@ runs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0
         ref: ${{ github.event.pull_request.head.ref }}
     - name: Check for .ruby-version file
       id: use_ruby_version_or_default
