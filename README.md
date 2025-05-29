@@ -88,4 +88,4 @@ including blocking a user from the organization's repositories.
 
 A big thanks to [Andrew Mason](https://github.com/andrewmcodes) for kicking off
 this project as
-[andrewmcodes/standardrb-acction](https://github.com/andrewmcodes/standardrb-action)!
+[andrewmcodes/standardrb-action](https://github.com/andrewmcodes/standardrb-action)!
