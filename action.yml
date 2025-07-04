@@ -1,6 +1,6 @@
-name: 'Standard Ruby'
-description: 'A GitHub Action that lints and auto-fixes your Ruby code with Standard Ruby'
-author: 'Justin Searls <searls@gmail.com>'
+name: Standard Ruby Linter
+description: Lint and auto-fix your Ruby code with Standard Ruby.
+author: Justin Searls <searls@gmail.com>
 
 inputs:
   ruby-version:
