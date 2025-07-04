@@ -1,8 +1,12 @@
 # CHANGELOG
 
-## 1.3.0
+## 1.4.0
 
 * Configurable working directory [#22](https://github.com/standardrb/standard-ruby-action/pull/22)
+
+## 1.3.0
+
+* Read .ruby-version [#20](https://github.com/standardrb/standard-ruby-action/pull/20)
 
 ## 1.2.0
 
