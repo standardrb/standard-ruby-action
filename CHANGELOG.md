@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.4.1
+
+* Fix typo in README by @garyhtou in https://github.com/standardrb/standard-ruby-action/pull/24
+* Create Release GHA workflow by @jasonkarns in https://github.com/standardrb/standard-ruby-action/pull/27
+* rename action for publishing to github marketplace by @jasonkarns in https://github.com/standardrb/standard-ruby-action/pull/28
+
 ## 1.4.0
 
 * Configurable working directory [#22](https://github.com/standardrb/standard-ruby-action/pull/22)
