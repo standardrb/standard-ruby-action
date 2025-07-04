@@ -81,5 +81,5 @@ runs:
         exit 1
 
 branding:
-  icon: 'code'
-  color: 'gray-dark'
+  icon: code
+  color: yellow
