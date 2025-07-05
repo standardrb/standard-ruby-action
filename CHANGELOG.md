@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.5.0
+
+* Rename back to Standard Ruby by @jasonkarns in https://github.com/standardrb/standard-ruby-action/pull/31
+
 ## 1.4.1
 
 * Fix typo in README by @garyhtou in https://github.com/standardrb/standard-ruby-action/pull/24
