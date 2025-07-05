@@ -1,18 +1,18 @@
-name: Standard Ruby Linter
+name: Standard Ruby
 description: Lint and auto-fix your Ruby code with Standard Ruby.
 author: Justin Searls <searls@gmail.com>
 
 inputs:
   ruby-version:
-    description: 'The Ruby version specifier to pass to ruby/setup-ruby'
+    description: The Ruby version specifier to pass to ruby/setup-ruby
     required: false
     default: 'ruby' # Defaults to the latest stable CRuby version
   autofix:
-    description: 'Whether autofixes should be committed back to the branch'
+    description: Whether autofixes should be committed back to the branch
     required: false
     default: 'true'
   workdir:
-    description: "The working directory from which to run this action's commands. Default '.'"
+    description: The working directory from which to run this action's commands. Default '.'
     default: '.'
 
 runs:
