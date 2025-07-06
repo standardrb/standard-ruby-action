@@ -1,0 +1,31 @@
+name: Smoke Test
+on: # test our action against multiple events
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  checks: write
+  contents: write
+
+jobs:
+  pass-standard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: ./
+        with:
+          workdir: examples/good
+
+  fail-standard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - continue-on-error: true
+        id: standardrb
+        uses: ./
+        with:
+          workdir: examples/bad
+          autofix: false
+      - if: steps.standardrb.outcome != 'failure'
+        run: echo "Standard should have failed"; exit 1
