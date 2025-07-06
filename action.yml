@@ -30,7 +30,7 @@ runs:
       shell: bash
       working-directory: ${{ inputs.workdir }}
       run: |
-        if [ -f .ruby-version ] || [ -f .tool-versions ] || [ -f mise.toml ];
+        if [ -f .ruby-version ] || grep -sq ruby -- .tool-versions mise.toml;
         then echo "Version files found; allow setup-ruby to resolve from file."
         else echo "No version files found; using 'ruby' (latest stable CRuby)."
           echo "ruby-version=ruby" >> "$GITHUB_ENV"
