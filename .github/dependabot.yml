@@ -6,5 +6,5 @@ updates:
     directory: "/"
     schedule: { interval: weekly }
   - package-ecosystem: bundler
-    directories: "/examples/*"
+    directories: [ "/examples/*" ]
     schedule: { interval: weekly }
