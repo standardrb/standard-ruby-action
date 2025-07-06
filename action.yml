@@ -1,6 +1,7 @@
 name: Standard Ruby
 description: Lint and auto-fix your Ruby code with Standard Ruby.
 author: Justin Searls <searls@gmail.com>
+branding: { icon: code, color: yellow }
 
 inputs:
   ruby-version:
@@ -79,7 +80,3 @@ runs:
       run: |
         echo "::error::Standard Ruby found issues in your code."
         exit 1
-
-branding:
-  icon: code
-  color: yellow
