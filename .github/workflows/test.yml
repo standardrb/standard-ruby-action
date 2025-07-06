@@ -25,7 +25,7 @@ jobs:
         id: standardrb
         uses: ./
         with:
-          workdir: examples/good
+          workdir: examples/bad
           autofix: false
       - if: steps.standardrb.outcome != 'failure'
         run: echo "Standard should have failed"; exit 1
