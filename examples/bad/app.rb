@@ -1,4 +1,4 @@
-# sample sinatra app, known to not pass standard ruby
+# sample ruby app, known to not pass standard ruby
 
 require 'sinatra'
 
