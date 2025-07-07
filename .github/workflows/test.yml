@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: ./
         with:
-          workdir: examples/good
+          working-directory: examples/good
 
   ruby-version-param: # uses 3.2 explicitly from input param
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
         id: standardrb
         uses: ./
         with:
-          workdir: examples/bad
+          working-directory: examples/bad
           autofix: false
       - if: steps.standardrb.outcome != 'failure'
         run: echo "Standard should have failed"; exit 1
