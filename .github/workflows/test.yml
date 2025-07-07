@@ -9,13 +9,30 @@ permissions:
   contents: write
 
 jobs:
-  pass-standard:
+  pass-standard: # uses default 'ruby' version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: ./
         with:
           workdir: examples/good
+
+  ruby-version-param: # uses 3.2 explicitly from input param
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: ./
+        with:
+          ruby-version: 3.2
+          workdir: examples/ruby-version-file
+
+  ruby-version-file: # uses 3.1 implicitly from ruby-version file
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: ./
+        with:
+          workdir: examples/ruby-version-file
 
   fail-standard:
     runs-on: ubuntu-latest

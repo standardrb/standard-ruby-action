@@ -5,15 +5,19 @@ branding: { icon: code, color: yellow }
 
 inputs:
   ruby-version:
-    description: The Ruby version specifier to pass to ruby/setup-ruby
+    description: >
+      The ruby version specifier to pass to ruby/setup-ruby. If omitted,
+      respects files (in order) — .ruby-version, .tool-versions, mise.toml.
+      Finally defaults to 'ruby' (latest stable CRuby).
+      https://github.com/ruby/setup-ruby?tab=readme-ov-file#supported-version-syntax
     required: false
-    default: 'ruby' # Defaults to the latest stable CRuby version
+    default: ''
   autofix:
     description: Whether autofixes should be committed back to the branch
     required: false
     default: 'true'
   workdir:
-    description: The working directory from which to run this action's commands. Default '.'
+    description: The working directory from which to run this action's commands.
     default: '.'
 
 runs:
@@ -22,22 +26,19 @@ runs:
   steps:
     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-    - name: Check for .ruby-version file
-      id: use_ruby_version_or_default
+    - if: ${{ inputs.ruby-version == '' }}
       shell: bash
       working-directory: ${{ inputs.workdir }}
       run: |
-        if [ -f .ruby-version ]; then
-          echo "Using Ruby version from .ruby-version file"
-          RUBY_VERSION=$(cat .ruby-version)
-          echo "ruby-version=$RUBY_VERSION" >> $GITHUB_ENV
-        else
-          echo "No .ruby-version file found, using default"
+        if [ -f .ruby-version ] || grep -sq ruby -- .tool-versions mise.toml;
+        then echo "Version files found; allow setup-ruby to resolve from file."
+        else echo "No version files found; using 'ruby' (latest stable CRuby)."
+          echo "ruby-version=ruby" >> "$GITHUB_ENV"
         fi
 
     - uses: ruby/setup-ruby@a4effe49ee8ee5b8b5091268c473a4628afb5651 # v1.245.0
       with:
-        ruby-version: ${{ env.ruby-version || inputs.ruby-version }}
+        ruby-version: ${{ inputs.ruby-version || env.ruby-version }}
         bundler-cache: true
         working-directory: ${{ inputs.workdir }}
 
