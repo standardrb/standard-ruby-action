@@ -18,6 +18,10 @@ inputs:
     default: 'true'
   workdir:
     description: The working directory from which to run this action's commands.
+    default: ''
+    deprecationMessage: rename to 'working-directory'.
+  working-directory:
+    description: The working directory from which to run this action's commands.
     default: '.'
 
 runs:
@@ -28,7 +32,7 @@ runs:
 
     - if: ${{ inputs.ruby-version == '' }}
       shell: bash
-      working-directory: ${{ inputs.workdir }}
+      working-directory: ${{ inputs.workdir || inputs.working-directory }}
       run: |
         if [ -f .ruby-version ] || grep -sq ruby -- .tool-versions mise.toml;
         then echo "Version files found; allow setup-ruby to resolve from file."
@@ -40,19 +44,19 @@ runs:
       with:
         ruby-version: ${{ inputs.ruby-version || env.ruby-version }}
         bundler-cache: true
-        working-directory: ${{ inputs.workdir }}
+        working-directory: ${{ inputs.workdir || inputs.working-directory }}
 
     - name: Run Standard Ruby; optionally autofix
       id: standardrb
       shell: bash
-      working-directory: ${{ inputs.workdir }}
+      working-directory: ${{ inputs.workdir || inputs.working-directory }}
       run: bundle exec standardrb ${{ inputs.autofix == 'true' && '--fix' || '' }} --format github --format "Standard::Formatter"
       continue-on-error: true
 
     - name: Check for modified files
       id: check_changes
       shell: bash
-      working-directory: ${{ inputs.workdir }}
+      working-directory: ${{ inputs.workdir || inputs.working-directory }}
       run: |
         if [ -n "$(git diff --name-only --diff-filter=M)" ]; then
           echo "standardrb_autofixes_found=true" >> $GITHUB_ENV
