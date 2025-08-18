@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
         with: { egress-policy: audit }
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - run: |
           gh release view $tag || \
             gh release create ${tag/*-*/"$tag" --prerelease} --generate-notes
@@ -29,7 +29,7 @@ jobs:
     steps:
       - uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
         with: { egress-policy: audit }
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       # FIXME pushes branch instead of tag because github bug:
       # https://github.com/orgs/community/discussions/163366
       - run: git push -f origin "HEAD:refs/heads/${GITHUB_REF_NAME%%.*}"
