@@ -12,7 +12,7 @@ jobs:
   pass-standard: # uses default 'ruby' version
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - uses: ./
         with:
           working-directory: examples/good
@@ -20,7 +20,7 @@ jobs:
   ruby-version-param: # uses 3.2 explicitly from input param
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - uses: ./
         with:
           ruby-version: 3.2
@@ -29,7 +29,7 @@ jobs:
   ruby-version-file: # uses 3.1 implicitly from ruby-version file
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - uses: ./
         with:
           workdir: examples/ruby-version-file
@@ -37,7 +37,7 @@ jobs:
   fail-standard:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - continue-on-error: true
         id: standardrb
         uses: ./
