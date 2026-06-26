@@ -40,7 +40,7 @@ runs:
           echo "ruby-version=ruby" >> "$GITHUB_ENV"
         fi
 
-    - uses: ruby/setup-ruby@7372622e62b60b3cb750dcd2b9e32c247ffec26a # v1.302.0
+    - uses: ruby/setup-ruby@v1 # unpinned to allow users to get latest rubies
       with:
         ruby-version: ${{ inputs.ruby-version || env.ruby-version }}
         bundler-cache: true
