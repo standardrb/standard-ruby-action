@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 1.6.0
+
+* Smoke test this action against example sinatra apps. by @jasonkarns in https://github.com/standardrb/standard-ruby-action/pull/32
+* Pin action dependencies to full sha for security by @jasonkarns in https://github.com/standardrb/standard-ruby-action/pull/34
+* Configure dependabot for bundler in example dirs by @jasonkarns in https://github.com/standardrb/standard-ruby-action/pull/35
+* Enhance ruby-version selection by @jasonkarns in https://github.com/standardrb/standard-ruby-action/pull/39
+* Rename workdir to working-directory by @jasonkarns in https://github.com/standardrb/standard-ruby-action/pull/40
+* Decrease dependabot frequence to monthly for GHA by @jasonkarns in https://github.com/standardrb/standard-ruby-action/pull/73
+* Don't pin production dependencies to SHAs by @jasonkarns in https://github.com/standardrb/standard-ruby-action/pull/81
+
 ## 1.5.0
 
 * Rename back to Standard Ruby by @jasonkarns in https://github.com/standardrb/standard-ruby-action/pull/31
